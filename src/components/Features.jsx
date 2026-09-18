@@ -1,6 +1,7 @@
 import { TiLocationArrow } from "react-icons/ti";
 import BentoCard from "./BentoCard";
 import BentoTilt from "./BentoTilt";
+import { VIDEO_BASE_URL } from "../constants";
 
 // "Insane shonen-style combat" — gameplay clips mapped to weapons & techniques.
 const Features = () => {
@@ -23,7 +24,7 @@ const Features = () => {
         {/* Hero feature: voice techniques */}
         <BentoTilt className="border-hsla relative mb-5 h-80 w-full overflow-hidden rounded-lg md:mb-7 md:h-[65vh]">
           <BentoCard
-            src="/video/technics.mp4"
+            src={`${VIDEO_BASE_URL}/technics.mp4`}
             label="Voice-activated"
             title={
               <>
@@ -38,7 +39,7 @@ const Features = () => {
         <div className="grid grid-cols-2 gap-5 md:h-[135vh] md:grid-rows-3 md:gap-7">
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1 md:row-span-2">
             <BentoCard
-              src="/video/katana.mp4"
+              src={`${VIDEO_BASE_URL}/katana.mp4`}
               label="Blade"
               title={
                 <>
@@ -51,7 +52,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1">
             <BentoCard
-              src="/video/scythe.mp4"
+              src={`${VIDEO_BASE_URL}/scythe.mp4`}
               label="Reaper"
               title={
                 <>
@@ -64,7 +65,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1">
             <BentoCard
-              src="/video/bow.mp4"
+              src={`${VIDEO_BASE_URL}/bow.mp4`}
               label="Ranged"
               title={
                 <>
@@ -86,7 +87,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_2 h-80 md:h-auto">
             <BentoCard
-              src="/video/motorcycle.mp4"
+              src={`${VIDEO_BASE_URL}/motorcycle.mp4`}
               label="Transportation"
               title={
                 <>

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { FiPlay, FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
 import AnimatedTitle from "./AnimatedTitle";
+import { VIDEO_BASE_URL } from "../constants";
 
 const shots = [2, 3, 4, 5, 6, 7, 8, 9];
 
 const galleryItems = [
   {
     type: "video",
-    src: "/video/trailer.mp4",
+    src: `${VIDEO_BASE_URL}/trailer.mp4`,
     preview: "/img/shot-1.jpg",
     alt: "KAGE trailer",
     title: "Watch the trailer",
