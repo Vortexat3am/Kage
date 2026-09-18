@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { FiX } from "react-icons/fi";
-import { VIDEO_BASE_URL } from "../constants";
+import { VIDEOS } from "../constants";
 
 // Lightweight trailer player. The <video> only mounts (and loads) while open.
 const TrailerModal = ({ open, onClose }) => {
@@ -35,7 +35,7 @@ const TrailerModal = ({ open, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <video
-          src={`${VIDEO_BASE_URL}/trailer.mp4`}
+          src={VIDEOS.trailer}
           controls
           autoPlay
           playsInline

@@ -2,14 +2,14 @@ import { useState } from "react";
 import { FiPlay } from "react-icons/fi";
 import AnimatedTitle from "./AnimatedTitle";
 import MediaLightbox from "./MediaLightbox";
-import { VIDEO_BASE_URL } from "../constants";
+import { VIDEOS } from "../constants";
 
 const shots = [2, 3, 4, 5, 6, 7, 8, 9];
 
 const galleryItems = [
   {
     type: "video",
-    src: `${VIDEO_BASE_URL}/trailer.mp4`,
+    src: VIDEOS.trailer,
     preview: "/img/shot-1.jpg",
     alt: "KAGE trailer",
     title: "Watch the trailer",

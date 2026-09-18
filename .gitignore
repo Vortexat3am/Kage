@@ -24,5 +24,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Videos are hosted as GitHub Release assets instead of being committed
+# Videos are hosted on Vercel Blob instead of being committed
 public/video/*.mp4
+
+.vercel
+.env*

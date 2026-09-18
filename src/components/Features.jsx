@@ -3,14 +3,14 @@ import { TiLocationArrow } from "react-icons/ti";
 import BentoCard from "./BentoCard";
 import BentoTilt from "./BentoTilt";
 import MediaLightbox from "./MediaLightbox";
-import { VIDEO_BASE_URL } from "../constants";
+import { VIDEOS } from "../constants";
 
 const featureVideos = [
-  { type: "video", src: `${VIDEO_BASE_URL}/technics.mp4`, alt: "Techniques", title: "Techniques" },
-  { type: "video", src: `${VIDEO_BASE_URL}/katana.mp4`, alt: "Katana", title: "Katana" },
-  { type: "video", src: `${VIDEO_BASE_URL}/scythe.mp4`, alt: "Scythe", title: "Scythe" },
-  { type: "video", src: `${VIDEO_BASE_URL}/bow.mp4`, alt: "The Bow", title: "The Bow" },
-  { type: "video", src: `${VIDEO_BASE_URL}/motorcycle.mp4`, alt: "Motorcycle", title: "Motorcycle" },
+  { type: "video", src: VIDEOS.technics, alt: "Techniques", title: "Techniques" },
+  { type: "video", src: VIDEOS.katana, alt: "Katana", title: "Katana" },
+  { type: "video", src: VIDEOS.scythe, alt: "Scythe", title: "Scythe" },
+  { type: "video", src: VIDEOS.bow, alt: "The Bow", title: "The Bow" },
+  { type: "video", src: VIDEOS.motorcycle, alt: "Motorcycle", title: "Motorcycle" },
 ];
 
 // "Insane shonen-style combat" — gameplay clips mapped to weapons & techniques.
