@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   KAGE — theme tokens
+---------------------------------------------------------------------------- */
+@theme {
+  /* Fonts */
+  --font-brush: "Permanent Marker", "Comic Sans MS", cursive; /* big ink titles only */
+  --font-sans: "Inter", system-ui, sans-serif; /* body + UI */
+  --font-cond: "Oswald", "Inter Tight", sans-serif; /* condensed labels / stats */
+  --font-kanji: "Yuji Mai", serif; /* the 影 motif */
+
+  /* Palette — blood red / ink black / bone / cyan war-paint */
+  --color-ink: #0b0b0d; /* page background */
+  --color-coal: #141417; /* raised panels */
+  --color-panel: #1b1b21; /* cards */
+  --color-blood: #7c0d13; /* deep red */
+  --color-crimson: #c8141f; /* primary brand red */
+  --color-ember: #ff2e2e; /* bright glow / hover */
+  --color-bone: #ece5d6; /* primary text */
+  --color-bonedim: #b3ab9b; /* secondary text */
+  --color-ash: #82828b; /* muted */
+  --color-cyan: #41c8dc; /* war-paint accent */
+}
+
+/* ----------------------------------------------------------------------------
+   Base
+---------------------------------------------------------------------------- */
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-crimson);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-blood);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-crimson);
+}
+
+/* Global PS1-style grain overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ----------------------------------------------------------------------------
+   Utilities
+---------------------------------------------------------------------------- */
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility absolute-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility border-hsla {
+  @apply border border-white/10;
+}
+
+/* small condensed label with a red tick — used above section titles */
+@utility eyebrow {
+  @apply inline-flex items-center gap-3 font-cond text-xs uppercase tracking-[0.32em] text-bonedim;
+}
+
+/* The brush identity font. <b> letters render in crimson for a two-tone ink look. */
+@utility special-font {
+  font-family: var(--font-brush);
+}
+
+@utility brush-title {
+  @apply font-brush uppercase leading-[0.95];
+}
+
+@utility hero-heading {
+  @apply special-font uppercase leading-[0.85] text-6xl sm:text-8xl md:text-9xl lg:text-[10rem];
+}
+
+@utility section-title {
+  @apply special-font uppercase leading-[0.95] text-4xl sm:text-6xl md:text-7xl;
+}
+
+@utility bento-title {
+  @apply special-font uppercase text-3xl md:text-5xl leading-[0.95];
+}
+
+.special-font b {
+  font-weight: inherit;
+  color: var(--color-crimson);
+}
+
+/* big faded kanji watermark */
+@utility kanji-watermark {
+  @apply font-kanji pointer-events-none select-none text-crimson;
+}
+
+/* Nav link with animated underline */
+@utility nav-link {
+  @apply relative font-cond text-sm uppercase tracking-[0.18em] text-bone/80 transition-colors duration-300 hover:text-bone
+    after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0
+    after:bg-crimson after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100
+    cursor-pointer;
+}
+
+@utility floating-nav {
+  @apply bg-ink/85 backdrop-blur-md border border-white/10 rounded-xl;
+}
+
+/* Animated title (per-word reveal) */
+@utility animated-title {
+  @apply flex flex-col gap-1 brush-title text-5xl sm:text-7xl md:text-[5.5rem] text-bone;
+}
+
+@utility animated-word {
+  @apply special-font opacity-0;
+  transform: translate3d(10px, 40px, -60px) rotateY(40deg) rotateX(-30deg);
+  transform-origin: 50% 50% -150px !important;
+  will-change: opacity, transform;
+}
+
+/* Bento card tilts */
+@utility bento-tilt_1 {
+  @apply relative border-hsla col-span-2 overflow-hidden rounded-lg transition-transform duration-300 ease-out;
+}
+@utility bento-tilt_2 {
+  @apply relative col-span-1 row-span-1 overflow-hidden rounded-lg transition-transform duration-300 ease-out;
+}
+
+/* Story image mask (kept from template, restyled context) */
+@utility story-img-container {
+  @apply relative md:h-dvh h-[90vh] w-full;
+  filter: url("#flt_tag");
+}
+@utility story-img-mask {
+  @apply absolute left-0 top-0 size-full overflow-hidden md:left-[20%] md:top-[-10%] md:size-4/5;
+  clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
+}
+@utility story-img-content {
+  @apply absolute w-full md:h-dvh h-[50dvh] opacity-100 left-10 top-16 md:left-0 md:top-10 lg:left-[-200px] lg:top-[-80px];
+  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+}
+
+/* clip shapes reused for the CTA character art */
+@utility kage-clip-1 {
+  clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+}
+@utility kage-clip-2 {
+  clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+}
+
+/* ----------------------------------------------------------------------------
+   Audio indicator bars (navbar)
+---------------------------------------------------------------------------- */
+.indicator-line {
+  @apply h-1 w-px rounded-full bg-bone transition-all duration-200 ease-in-out;
+}
+.indicator-line.active {
+  animation: indicator-line 0.5s ease infinite;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+@keyframes indicator-line {
+  0% { height: 4px; transform: translateY(-0px); }
+  50% { height: 16px; transform: translateY(-4px); }
+  100% { height: 4px; transform: translateY(-0px); }
+}
+
+/* ----------------------------------------------------------------------------
+   Loader (recolored three-body)
+---------------------------------------------------------------------------- */
+.three-body {
+  --uib-size: 38px;
+  --uib-speed: 0.8s;
+  --uib-color: var(--color-crimson);
+  position: relative;
+  display: inline-block;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+.three-body__dot {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+}
+.three-body__dot:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--uib-color);
+  border-radius: 50%;
+}
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+  transform-origin: 50% 85%;
+}
+.three-body__dot:nth-child(1)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite ease-in-out;
+  animation-delay: calc(var(--uib-speed) * -0.3);
+}
+.three-body__dot:nth-child(2) {
+  bottom: 5%;
+  right: 0;
+  transform: rotate(-60deg);
+  transform-origin: 50% 85%;
+}
+.three-body__dot:nth-child(2)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+.three-body__dot:nth-child(3) {
+  bottom: -5%;
+  left: 0;
+  transform: translateX(116.666%);
+}
+.three-body__dot:nth-child(3)::after {
+  top: 0;
+  left: 0;
+  animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+@keyframes spin78236 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes wobble1 {
+  0%, 100% { transform: translateY(0%) scale(1); opacity: 1; }
+  50% { transform: translateY(-66%) scale(0.65); opacity: 0.8; }
+}
+@keyframes wobble2 {
+  0%, 100% { transform: translateY(0%) scale(1); opacity: 1; }
+  50% { transform: translateY(66%) scale(0.65); opacity: 0.8; }
+}
+
+/* float + pulse helpers */
+@keyframes kage-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes kage-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
