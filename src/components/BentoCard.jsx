@@ -18,14 +18,14 @@ const BentoCard = ({ src, title, description, label, onClick }) => {
         autoPlay
         playsInline
         preload="metadata"
-        className="absolute left-0 top-0 size-full object-cover object-center"
+        className="pointer-events-none absolute left-0 top-0 size-full object-cover object-center"
       />
 
       {/* legibility wash */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-ink/40" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-ink/40" />
 
       {onClick && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <span className="flex-center size-14 rounded-full border border-bone/40 bg-ink/50 text-2xl text-bone backdrop-blur-sm transition-transform group-hover:scale-110 group-hover:border-crimson group-hover:text-crimson">
             <FiPlay className="ml-1" />
           </span>
