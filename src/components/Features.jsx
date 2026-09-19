@@ -3,14 +3,14 @@ import { TiLocationArrow } from "react-icons/ti";
 import BentoCard from "./BentoCard";
 import BentoTilt from "./BentoTilt";
 import MediaLightbox from "./MediaLightbox";
-import { VIDEOS } from "../constants";
+import { VIDEOS, VIDEO_POSTERS } from "../constants";
 
 const featureVideos = [
-  { type: "video", src: VIDEOS.technics, alt: "Techniques", title: "Techniques" },
-  { type: "video", src: VIDEOS.katana, alt: "Katana", title: "Katana" },
-  { type: "video", src: VIDEOS.scythe, alt: "Scythe", title: "Scythe" },
-  { type: "video", src: VIDEOS.bow, alt: "The Bow", title: "The Bow" },
-  { type: "video", src: VIDEOS.motorcycle, alt: "Motorcycle", title: "Motorcycle" },
+  { type: "video", src: VIDEOS.technics, preview: VIDEO_POSTERS.technics, alt: "Techniques", title: "Techniques" },
+  { type: "video", src: VIDEOS.katana, preview: VIDEO_POSTERS.katana, alt: "Katana", title: "Katana" },
+  { type: "video", src: VIDEOS.scythe, preview: VIDEO_POSTERS.scythe, alt: "Scythe", title: "Scythe" },
+  { type: "video", src: VIDEOS.bow, preview: VIDEO_POSTERS.bow, alt: "The Bow", title: "The Bow" },
+  { type: "video", src: VIDEOS.motorcycle, preview: VIDEO_POSTERS.motorcycle, alt: "Motorcycle", title: "Motorcycle" },
 ];
 
 // "Insane shonen-style combat" — gameplay clips mapped to weapons & techniques.
@@ -37,6 +37,7 @@ const Features = () => {
         <BentoTilt className="border-hsla relative mb-5 h-80 w-full overflow-hidden rounded-lg md:mb-7 md:h-[65vh]">
           <BentoCard
             src={featureVideos[0].src}
+            poster={featureVideos[0].preview}
             onClick={() => setLightboxIndex(0)}
             label="Voice-activated"
             title={
@@ -53,6 +54,7 @@ const Features = () => {
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1 md:row-span-2">
             <BentoCard
               src={featureVideos[1].src}
+              poster={featureVideos[1].preview}
               onClick={() => setLightboxIndex(1)}
               label="Blade"
               title={
@@ -67,6 +69,7 @@ const Features = () => {
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1">
             <BentoCard
               src={featureVideos[2].src}
+              poster={featureVideos[2].preview}
               onClick={() => setLightboxIndex(2)}
               label="Reaper"
               title={
@@ -81,6 +84,7 @@ const Features = () => {
           <BentoTilt className="bento-tilt_1 h-80 md:h-auto md:col-span-1">
             <BentoCard
               src={featureVideos[3].src}
+              poster={featureVideos[3].preview}
               onClick={() => setLightboxIndex(3)}
               label="Ranged"
               title={
@@ -104,6 +108,7 @@ const Features = () => {
           <BentoTilt className="bento-tilt_2 h-80 md:h-auto">
             <BentoCard
               src={featureVideos[4].src}
+              poster={featureVideos[4].preview}
               onClick={() => setLightboxIndex(4)}
               label="Transportation"
               title={

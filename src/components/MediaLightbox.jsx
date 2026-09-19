@@ -50,6 +50,7 @@ const MediaLightbox = ({ items, startIndex = 0, onClose }) => {
             <video
               key={active.src}
               src={active.src}
+              poster={active.preview}
               controls
               autoPlay
               playsInline

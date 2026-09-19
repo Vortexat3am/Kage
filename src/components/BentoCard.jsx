@@ -1,7 +1,7 @@
 import { FiPlay } from "react-icons/fi";
 
 // A video-backed feature tile used in the combat grid.
-const BentoCard = ({ src, title, description, label, onClick }) => {
+const BentoCard = ({ src, poster, title, description, label, onClick }) => {
   const Wrapper = onClick ? "button" : "div";
 
   return (
@@ -13,6 +13,7 @@ const BentoCard = ({ src, title, description, label, onClick }) => {
     >
       <video
         src={src}
+        poster={poster}
         loop
         muted
         autoPlay

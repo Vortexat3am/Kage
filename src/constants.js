@@ -21,3 +21,13 @@ export const VIDEOS = {
   technics: `${BLOB_HOST}/technics-zYziHY7xdPBKjEwT80kPW1UEhSsJ3p.mp4`,
   trailer: `${BLOB_HOST}/trailer-CV8UsizqyvYSLNk8xJvyU3KpUhWMEo.mp4`,
 };
+
+// Poster frames shown while a video buffers, and as lightbox thumbnails.
+export const VIDEO_POSTERS = {
+  bow: "/img/posters/bow.jpg",
+  katana: "/img/posters/katana.jpg",
+  motorcycle: "/img/posters/motorcycle.jpg",
+  scythe: "/img/posters/scythe.jpg",
+  technics: "/img/posters/technics.jpg",
+  trailer: "/img/posters/trailer.jpg",
+};
