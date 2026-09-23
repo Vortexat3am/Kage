@@ -27,6 +27,7 @@
    Base
 ---------------------------------------------------------------------------- */
 body {
+  position: relative;
   width: 100dvw;
   overflow-x: hidden;
   background-color: var(--color-ink);
@@ -55,10 +56,12 @@ body {
   background: var(--color-crimson);
 }
 
-/* Global PS1-style grain overlay */
+/* Global PS1-style grain overlay. Absolute (scrolls with the page) rather
+   than fixed, so the browser isn't recompositing this blend mode against
+   the whole scrolling page on every frame. */
 body::after {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 9999;
   pointer-events: none;

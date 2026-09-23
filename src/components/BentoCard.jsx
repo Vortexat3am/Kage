@@ -1,8 +1,31 @@
+import { useEffect, useRef } from "react";
 import { FiPlay } from "react-icons/fi";
 
-// A video-backed feature tile used in the combat grid.
+// A video-backed feature tile used in the combat grid. Playback is gated by
+// visibility so off-screen tiles aren't decoding video in the background —
+// with 5 of these on the page at once, that adds up fast.
 const BentoCard = ({ src, poster, title, description, label, onClick }) => {
+  const videoRef = useRef(null);
   const Wrapper = onClick ? "button" : "div";
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Wrapper
@@ -12,11 +35,11 @@ const BentoCard = ({ src, poster, title, description, label, onClick }) => {
       }`}
     >
       <video
+        ref={videoRef}
         src={src}
         poster={poster}
         loop
         muted
-        autoPlay
         playsInline
         preload="metadata"
         className="pointer-events-none absolute left-0 top-0 size-full object-cover object-center"
