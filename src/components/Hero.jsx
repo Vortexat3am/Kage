@@ -13,6 +13,7 @@ const Hero = ({ onWatchTrailer }) => {
   const [loaded, setLoaded] = useState(false);
   const maskRef = useRef(null);
   const bambooRef = useRef(null);
+  const rafRef = useRef(null);
 
   useGSAP(
     () => {
@@ -38,21 +39,28 @@ const Hero = ({ onWatchTrailer }) => {
   const handleMove = (e) => {
     // Desktop-only parallax (mask is in normal flow on mobile).
     if (window.innerWidth < 768) return;
-    const x = e.clientX / window.innerWidth - 0.5;
-    const y = e.clientY / window.innerHeight - 0.5;
-    gsap.to(maskRef.current, {
-      xPercent: x * 16,
-      yPercent: y * 14,
-      rotateY: x * 10,
-      rotateX: -y * 10,
-      duration: 0.7,
-      ease: "power2.out",
-    });
-    gsap.to(bambooRef.current, {
-      xPercent: x * -6,
-      yPercent: y * -5,
-      duration: 0.9,
-      ease: "power2.out",
+    if (rafRef.current) return;
+
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const x = clientX / window.innerWidth - 0.5;
+      const y = clientY / window.innerHeight - 0.5;
+      gsap.to(maskRef.current, {
+        xPercent: x * 16,
+        yPercent: y * 14,
+        rotateY: x * 10,
+        rotateX: -y * 10,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+      gsap.to(bambooRef.current, {
+        xPercent: x * -6,
+        yPercent: y * -5,
+        duration: 0.9,
+        ease: "power2.out",
+      });
     });
   };
 
