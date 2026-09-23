@@ -102,8 +102,7 @@ const Hero = ({ onWatchTrailer }) => {
           onLoad={() => setLoaded(true)}
           src="/img/hero-mask.png"
           alt="KAGE oni mask"
-          className="w-[75vw] max-w-[400px] object-contain drop-shadow-[0_0_70px_rgba(200,20,31,0.45)] md:absolute md:left-1/2 md:top-[25%] md:h-[58vh] md:w-auto md:max-w-none md:-translate-x-1/2 md:-translate-y-1/2"
-          style={{ animation: "kage-float 6s ease-in-out infinite" }}
+          className="hero-mask-float w-[75vw] max-w-[400px] object-contain drop-shadow-[0_0_70px_rgba(200,20,31,0.45)] md:absolute md:left-1/2 md:top-[25%] md:h-[58vh] md:w-auto md:max-w-none md:-translate-x-1/2 md:-translate-y-1/2"
         />
 
         {/* Text block */}

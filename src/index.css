@@ -266,6 +266,12 @@ body::after {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
 }
+/* Hero oni mask float — desktop only, still on mobile */
+@media (min-width: 768px) {
+  .hero-mask-float {
+    animation: kage-float 6s ease-in-out infinite;
+  }
+}
 @keyframes kage-pulse {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }

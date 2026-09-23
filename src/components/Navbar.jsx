@@ -91,7 +91,7 @@ const Navbar = () => {
               title="Wishlist"
               leftIcon={<FaSteam />}
               href={LINKS.steam}
-              containerClass="hidden sm:inline-flex !px-5 !py-2"
+              containerClass="!hidden sm:!inline-flex !px-5 !py-2"
             />
 
             {/* Audio toggle */}
